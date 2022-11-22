@@ -109,7 +109,7 @@ Route::get('/', function () {
 // Route::resource('/post','postController')->middleware('auth');
 Route::group(['middleware'=>'auth'],function(){
     // Route::resource('/post','postController')->except('index');//除了index
-    Route::resource('/post','postController');
+    Route::resource('/post','PostController');
     Route::resource('/category','CategoryController');
 });
 // Route::resource('/post','postController')->only('index');//只有index
