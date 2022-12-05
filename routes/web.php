@@ -105,16 +105,28 @@ Route::get('/', function () {
 //因controller使用resource
 // Route::resource('/category','CategoryController');
 
-//加入auth保護
-// Route::resource('/post','postController')->middleware('auth');
+
+
+
+
+
+//===============================================================================
+加入auth保護
+Route::resource('/post','postController')->middleware('auth');
 Route::group(['middleware'=>'auth'],function(){
-    // Route::resource('/post','postController')->except('index');//除了index
+    Route::resource('/post','postController')->except('index');//除了index
     Route::resource('/post','PostController');
     Route::resource('/category','CategoryController');
 });
+//===============================================================================
+
 // Route::resource('/post','postController')->only('index');//只有index
 
 
+// Route::resource('/post','PostController');
+// Route::resource('/category','CategoryController');
+
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
